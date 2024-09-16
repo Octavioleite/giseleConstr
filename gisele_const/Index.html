@@ -1,0 +1,706 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gisele Construtora & Incorporadora</title>
+    <link rel="shortcut icon" href="img/logo_aba" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden; /* Impede a rolagem horizontal */
+            color: #333333;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        /* Carrossel */
+        .carousel-item img {
+            width: 100%;
+            height: 100vh; /* Ajusta a altura para a tela inteira */
+            object-fit: cover; /* Mantém a proporção da imagem */
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none; /* Remove os ícones padrão */
+            background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo */
+            width: 50px; /* Largura personalizada */
+            height: 50px; /* Altura personalizada */
+            border-radius: 100%; /* Deixa os ícones circulares */
+        }
+
+        /* Carrossel como fundo */
+        .carousel-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /*z-index: -1; /* Coloca o carrossel atrás de outros conteúdos */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff91; /* Fundo sólido */
+            padding: 1rem 2rem; /* Ajustar o espaçamento interno */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras sutis */
+            display: flex; /* Layout flexível para centralizar o conteúdo */
+            justify-content: space-between; /* Separar os itens da logo e do menu */
+            align-items: center; /* Centralizar verticalmente */
+            border-radius: 8px; /* Ajuste o valor conforme necessário para arredondar as bordas */
+            position: relative;
+            z-index: 1; /* Coloca a navbar sobre o carrossel */
+            max-width: 1300px; /* Define a largura máxima da navbar */
+            margin: 0 auto; /* Centraliza a navbar horizontalmente */
+        }
+
+        .navbar-brand {
+            margin-right: 33rem; /* Adiciona margem à direita da imagem da logo */
+        }
+
+        .navbar-brand img {
+            height: 150px; /* Aumente conforme necessário */
+            width: 300px; /* Mantém a proporção da imagem */
+        }
+
+        .navbar-nav .nav-link {
+            color: #000000;
+            margin-left: 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #333333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            z-index: 2; /* Coloca o conteúdo da hero section sobre o carrossel */
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #f28a49;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #f28a49;
+            margin-top: 20px;
+        }
+
+        .hero a {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #f28a49;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .hero a:hover {
+            background-color: #333333;
+        }
+
+        /* Seção de Serviços */
+        .services-section {
+            padding: 40px 0;
+            background-color: #ffffff;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .card {
+            border: none;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #000000;
+        }
+
+        .card-text {
+            color: #555555;
+        }
+
+        .card-footer {
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .card-footer a {
+            color: #ffffff;
+            background-color: #000000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: #050a30;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin-left: 10px;
+        }
+
+        .footer a:hover {
+            color: #cccccc;
+        }
+
+        /* Botão do WhatsApp */
+        .whatsapp-link {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 1px 1px 2px #888;
+            z-index: 1000;
+            transition: background-color 0.3s ease; 
+            animation: blink 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-link:hover {
+            color: #fff;
+            background-color: #1ebe5f;
+            transform: scale(1.2);
+        }
+
+        .whatsapp-link img {
+            width: 30px;
+            height: 30px;
+        }
+        .assistente-virtual {
+            position: fixed;
+            bottom: 1px;
+            left: 40px;
+            z-index: 1000;
+        }
+
+        .assistente-virtual-img {
+            width: 220px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+        }
+
+
+        .chat-box {
+            width: 300px;
+            border: 1px solid #ccc;
+            background-color: white;
+            position: fixed;
+            bottom: 250px;
+            left: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            padding: 10px;
+            background-color: #f28a49;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            display: flex;
+        }
+
+        .chat-footer input {
+            width: 70%;
+            padding: 5px;
+        }
+
+        .chat-footer button {
+            padding: 5px 10px;
+            background-color: #f28a49;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar{
+                background-color: #ffffff; /* Fundo sólido */
+                z-index: 1; /* Garante que a navbar fique acima de outros elementos */
+            }
+            .navbar-brand img {
+                height: 80px;
+                width: 165px;
+            }
+            .navbar-brand {
+            margin-right: 3rem; /* Adiciona margem à direita da imagem da logo */
+            }
+            .hero {
+                height: 50vh;
+            }    
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero a {
+                font-size: 0.875rem;
+                padding: 8px 16px;
+            }
+
+            .services-section h2 {
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+
+            .card-title {
+                font-size: 1.125rem;
+            }
+            .carousel-item img {
+                height: 50vh; /* Ajusta a altura para dispositivos médios */
+                margin-top: 120px
+            }
+            .assistente-virtual-img {
+            width: 170px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+            }
+            .assistente-virtual {
+                position: fixed;
+                bottom: 1px;
+                left: 1px;
+                z-index: 1000;
+            }
+            .chat-box {
+                width: 300px;
+                bottom: 180px;
+            }
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 30px;
+                height: 30px;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+            
+            /* Ajustar a posição dos botões */
+            .carousel-control-prev,
+            .carousel-control-next {
+                top: 40%; /* Centraliza verticalmente */
+                transform: translateY(-40%); /* Garante alinhamento central */
+                width: 60px; /* Definir largura fixa */
+                height: 60px; /* Definir altura fixa */
+            }      
+        }
+        @media (max-width: 576px) {
+            .navbar-nav .nav-link {
+                margin-left: 10px;
+            }
+            .hero {
+                height: 30vh;
+            } 
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .hero a {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .services-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+            .carousel-item img {
+                height: 30vh; /* Ajusta a altura para dispositivos menores */
+        
+            }
+            .assistente-virtual-img {
+            width: 100px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+        }
+            .assistente-virtual {
+                position: fixed;
+                bottom: 1px;
+                left: 1px;
+                z-index: 1000;
+            }
+            .chat-box {
+            width: 200px;
+            bottom: 100px;
+        }
+        .carousel-control-prev,
+            .carousel-control-next {
+                top: 30%; /* Centraliza verticalmente */
+                transform: translateY(-30%); /* Garante alinhamento central */
+                width: 60px; /* Definir largura fixa */
+                height: 60px; /* Definir altura fixa */
+            }  
+        }
+     /* ini: Preloader */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #737373; /* Cor do background que vai ocupar o body */
+    z-index: 999; /* z-index para jogar para frente e sobrepor tudo */
+    display: flex; /* Usado para centralizar o conteúdo do preloader */
+    justify-content: center;
+    align-items: center;
+}
+
+#preloader .inner {
+    text-align: center; /* Centraliza a animação dentro do preloader */
+}
+#preloader img {
+    max-width: 80%; /* Ajuste conforme necessário para garantir que a imagem não exceda o tamanho do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.bolas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bolas > div {
+    display: inline-block;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin: 3px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-name: animarBola;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.bolas > div:nth-child(1) {
+    animation-duration: 0.75s;
+    animation-delay: 0;
+}
+
+.bolas > div:nth-child(2) {
+    animation-duration: 0.75s;
+    animation-delay: 0.12s;
+}
+
+.bolas > div:nth-child(3) {
+    animation-duration: 0.75s;
+    animation-delay: 0.24s;
+}
+
+@keyframes animarBola {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    16% {
+        -webkit-transform: scale(0.1);
+        transform: scale(0.1);
+        opacity: 0.7;
+    }
+    33% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsividade do Preloader */
+@media (max-width: 768px) {
+    #preloader img {
+        max-width: 100%; /* Ajuste para telas menores */
+    }
+}
+
+@media (max-width: 576px) {
+    #preloader img {
+        max-width: 100%; /* Ajuste para telas ainda menores */
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- início do preloader -->
+ <!-- início do preloader -->
+<div id="preloader">
+    <div class="inner">
+        <img src="img/Carregamento.gif" alt="Carregando...">
+    </div>
+</div>
+<!-- fim do preloader -->
+
+<script src="js/preloader.js"></script>
+
+
+
+<script>
+    // Espera 4 segundos, altera o z-index para 0 e remove o elemento após 500ms
+    setTimeout(function() {
+        const preloader = document.querySelector('#preloader');
+        setTimeout(function() {
+            preloader.remove(); // Remove o elemento
+        }, 500); // Espera o tempo de transição (500ms)
+    }, 2000); // 4000 milissegundos = 4 segundos
+</script>
+
+<!-- fim do preloader --> 
+
+
+<script src="js/preloader.js"></script>
+<script>
+
+  //<[CDATA[
+    $(window).on('load', function(){
+      $('#preloader .inner').fadeOut();
+      $('#preloader').delay(350).fadeOut('slow');
+      $('body').delay(350).css({'overflow': 'visible'});
+    })
+  
+  //]]>
+</script>
+    
+    <!-- Assistente Virtual -->
+    <div class="assistente-virtual">
+        <button id="openChatBtn" class="btn">
+            <img src="img/face-imagem-85987.jpg" alt="Abrir Chat" class="assistente-virtual-img">
+        </button>
+    </div>
+    <!-- Janela de Chat do Assistente Virtual -->
+    <div id="chatBox" class="chat-box">
+        <div class="chat-header">
+            <h5>Gisele</h5>
+            <button id="closeChatBtn" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <p>Olá!</p>
+            <p>1 - Localização da empresa</p>
+            <p>2 - Canais de contato</p>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Digite a opção escolhida...">
+            <button id="sendBtn">Enviar</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const openChatBtn = document.getElementById('openChatBtn');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatBox = document.getElementById('chatBox');
+        const chatBody = document.getElementById('chatBody');
+        const sendBtn = document.getElementById('sendBtn');
+        const userInput = document.getElementById('userInput');
+
+        // Abrir e fechar o chat
+        openChatBtn.addEventListener('click', () => {
+            chatBox.style.display = 'block';
+        });
+
+        closeChatBtn.addEventListener('click', () => {
+            chatBox.style.display = 'none';
+        });
+
+        // Enviar mensagem e resposta simples
+        sendBtn.addEventListener('click', () => {
+    const userMessage = userInput.value;
+    if (userMessage.trim() !== '') {
+    const userMessageElem = document.createElement('p');
+    userMessageElem.textContent = `Você: ${userMessage}`;
+    chatBody.appendChild(userMessageElem);
+
+    // Exibir a mensagem "Gisele está digitando..."
+    const typingMessageElem = document.createElement('p');
+    typingMessageElem.textContent = 'Gisele está digitando...';
+    chatBody.appendChild(typingMessageElem);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    setTimeout(() => {
+        // Remover a mensagem "Gisele está digitando..."
+        chatBody.removeChild(typingMessageElem);
+
+        const botMessageElem = document.createElement('p');
+        // Respostas para as opções "1" e "2"
+        if (userMessage.includes('1')) {
+            botMessageElem.textContent = 'Local: Taguatinga CNC 3';
+        } else if (userMessage.includes('2')) {
+            botMessageElem.textContent = 'Telefone: (61) xxxx-xxxx';
+        } 
+        // Caso nenhuma opção válida seja escolhida
+        else {
+            botMessageElem.textContent = 'Opção escolhida não existe. Digite 1 para Local, ou 2 para Telefone.';
+        }
+        chatBody.appendChild(botMessageElem);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }, 1000); // Simula um tempo de resposta de 1 segundo
+
+    userInput.value = ''; // Limpar o campo de entrada após enviar a mensagem
+}
+
+});
+
+
+        // Enviar mensagem com Enter
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+    </script>
+    <!-- Carrossel como fundo -->
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-background">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/img/a.png" class="d-block w-100" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/img2.jpg"class = "d-block w-100" alt="Slide 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/img3.jpg" class="d-block w-100" alt="Slide 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span aria-hidden="true">
+                <!-- Substitua o ícone por texto ou imagem -->
+                <img src="/img/previous.png" alt="Previous" class="carousel-control-prev-icon">
+            </span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span aria-hidden="true">
+                <!-- Substitua o ícone por texto ou imagem -->
+                <img src="/img/next.png" alt="Next" class="carousel-control-next-icon">
+            </span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        
+    </div>
+    
+    
+    <!-- Botão do WhatsApp -->
+    <a class="whatsapp-link" href="https://wa.me/5561996404086?text=Test%20buttom%20whats" target="_blank">
+        <img src="img/WhatsApp.svg.png" alt="WhatsApp">
+    </a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/img/Jazz Days.png" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services-section"> <div class="container"> <h2>Nossos Serviços</h2> <div class="row justify-content-center"> <div class="col-lg-4 col-md-6 mb-4"> <div class="card"> <img src="img/project.jpg" class="card-img-top" alt="Serviço 1"> <div class="card-body"> <h5 class="card-title">Construção de Casas</h5> <p class="card-text">Oferecemos soluções completas para construção de residências, desde o planejamento até a entrega final.</p> </div> <div class="card-footer"> <a href="#">Saiba Mais</a> </div> </div> </div> </div> </div> </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2024 Gisele Construtora | Todos os direitos reservados</p>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </footer>
+
+   
+  
+
+</body>
+</html>
