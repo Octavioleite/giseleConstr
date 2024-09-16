@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nós</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden; /* Impede a rolagem horizontal */
+            color: #333333;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+        }
+
+        /* Carrossel */
+        .carousel-item img {
+            width: 100%;
+            height: 100vh; /* Ajusta a altura para a tela inteira */
+            object-fit: cover; /* Mantém a proporção da imagem */
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none; /* Remove os ícones padrão */
+            background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo */
+            width: 50px; /* Largura personalizada */
+            height: 50px; /* Altura personalizada */
+            border-radius: 100%; /* Deixa os ícones circulares */
+        }
+
+        /* Carrossel como fundo */
+        .carousel-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /*z-index: -1; /* Coloca o carrossel atrás de outros conteúdos */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff91; /* Fundo sólido */
+            padding: 1rem 2rem; /* Ajustar o espaçamento interno */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras sutis */
+            display: flex; /* Layout flexível para centralizar o conteúdo */
+            justify-content: space-between; /* Separar os itens da logo e do menu */
+            align-items: center; /* Centralizar verticalmente */
+            border-radius: 8px; /* Ajuste o valor conforme necessário para arredondar as bordas */
+            position: relative;
+            z-index: 1; /* Coloca a navbar sobre o carrossel */
+            max-width: 1300px; /* Define a largura máxima da navbar */
+            margin: 0 auto; /* Centraliza a navbar horizontalmente */
+        }
+
+        .navbar-brand {
+            margin-right: 33rem; /* Adiciona margem à direita da imagem da logo */
+        }
+
+        .navbar-brand img {
+            height: 150px; /* Aumente conforme necessário */
+            width: 300px; /* Mantém a proporção da imagem */
+        }
+
+        .navbar-nav .nav-link {
+            color: #000000;
+            margin-left: 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #333333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            z-index: 2; /* Coloca o conteúdo da hero section sobre o carrossel */
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #f28a49;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #f28a49;
+            margin-top: 20px;
+        }
+
+        .hero a {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ffffff;
+            background-color: #f28a49;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .hero a:hover {
+            background-color: #333333;
+        }
+
+        /* Seção de Serviços */
+        .services-section {
+            padding: 40px 0;
+            background-color: #ffffff;
+        }
+
+        .services-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #000000;
+        }
+
+        .card {
+            border: none;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #000000;
+        }
+
+        .card-text {
+            color: #555555;
+        }
+
+        .card-footer {
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .card-footer a {
+            color: #ffffff;
+            background-color: #000000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: #050a30;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin-left: 10px;
+        }
+
+        .footer a:hover {
+            color: #cccccc;
+        }
+
+        /* Botão do WhatsApp */
+        .whatsapp-link {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 1px 1px 2px #888;
+            z-index: 1000;
+            transition: background-color 0.3s ease; 
+            animation: blink 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-link:hover {
+            color: #fff;
+            background-color: #1ebe5f;
+            transform: scale(1.2);
+        }
+
+        .whatsapp-link img {
+            width: 30px;
+            height: 30px;
+        }
+        .assistente-virtual {
+            position: fixed;
+            bottom: 1px;
+            left: 40px;
+            z-index: 1000;
+        }
+
+        .assistente-virtual-img {
+            width: 220px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+        }
+
+
+        .chat-box {
+            width: 300px;
+            border: 1px solid #ccc;
+            background-color: white;
+            position: fixed;
+            bottom: 250px;
+            left: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            padding: 10px;
+            background-color: #f28a49;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            display: flex;
+        }
+
+        .chat-footer input {
+            width: 70%;
+            padding: 5px;
+        }
+
+        .chat-footer button {
+            padding: 5px 10px;
+            background-color: #f28a49;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .navbar{
+                background-color: #ffffff; /* Fundo sólido */
+                z-index: 1; /* Garante que a navbar fique acima de outros elementos */
+            }
+            .navbar-brand img {
+                height: 80px;
+                width: 165px;
+            }
+            .navbar-brand {
+            margin-right: 3rem; /* Adiciona margem à direita da imagem da logo */
+            }
+            .hero {
+                height: 50vh;
+            }    
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero a {
+                font-size: 0.875rem;
+                padding: 8px 16px;
+            }
+
+            .services-section h2 {
+                font-size: 1.75rem;
+                margin-bottom: 20px;
+            }
+
+            .card-title {
+                font-size: 1.125rem;
+            }
+            .carousel-item img {
+                height: 50vh; /* Ajusta a altura para dispositivos médios */
+                margin-top: 120px
+            }
+            .assistente-virtual-img {
+            width: 170px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+            }
+            .assistente-virtual {
+                position: fixed;
+                bottom: 1px;
+                left: 1px;
+                z-index: 1000;
+            }
+            .chat-box {
+                width: 300px;
+                bottom: 180px;
+            }
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 30px;
+                height: 30px;
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+            
+            /* Ajustar a posição dos botões */
+            .carousel-control-prev,
+            .carousel-control-next {
+                top: 40%; /* Centraliza verticalmente */
+                transform: translateY(-40%); /* Garante alinhamento central */
+                width: 60px; /* Definir largura fixa */
+                height: 60px; /* Definir altura fixa */
+            }      
+        }
+        @media (max-width: 576px) {
+            .navbar-nav .nav-link {
+                margin-left: 10px;
+            }
+            .hero {
+                height: 30vh;
+            } 
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .hero a {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .services-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+            .carousel-item img {
+                height: 30vh; /* Ajusta a altura para dispositivos menores */
+        
+            }
+            .assistente-virtual-img {
+            width: 100px; /* Defina o tamanho desejado aqui */
+            height: auto; /* Ajuste para o tamanho necessário */
+        }
+            .assistente-virtual {
+                position: fixed;
+                bottom: 1px;
+                left: 1px;
+                z-index: 1000;
+            }
+            .chat-box {
+            width: 200px;
+            bottom: 100px;
+        }
+        .carousel-control-prev,
+            .carousel-control-next {
+                top: 30%; /* Centraliza verticalmente */
+                transform: translateY(-30%); /* Garante alinhamento central */
+                width: 60px; /* Definir largura fixa */
+                height: 60px; /* Definir altura fixa */
+            }  
+        }
+    </style>
+</head>
+<body>
+    
+
+</body>
+</html>
