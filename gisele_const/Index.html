@@ -9,14 +9,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
+        .body {
             margin: 0;
             overflow-x: hidden; /* Impede a rolagem horizontal */
             color: #333333;
             font-family: 'Arial', sans-serif;
             position: relative;
         }
-
+        .videoTam {
+            width: 1000px;
+            height: auto;
+        }
         /* Carrossel */
         .carousel-item img {
             width: 100%;
@@ -74,10 +77,26 @@
         .navbar-nav .nav-link:hover {
             color: #333333;
         }
+        /* footer*/
+        .footer {
+            background-color: #050a30;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin-left: 10px;
+        }
+
+        .footer a:hover {
+            color: #cccccc;
+        }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -113,71 +132,28 @@
 
         /* Seção de Serviços */
         .services-section {
-            padding: 40px 0;
-            background-color: #ffffff;
+    padding: 40px 0;
+    background-color: #ffffff;
         }
 
         .services-section h2 {
             text-align: center;
             font-size: 2rem;
+            color: #000000;
             margin-bottom: 30px;
-            color: #000000;
         }
+        .services-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333333;
+        }   
 
-        .card {
-            border: none;
-            background-color: #f8f9fa;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+        .services-section p strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            color: #000000;
-        }
-
-        .card-text {
-            color: #555555;
-        }
-
-        .card-footer {
-            background-color: transparent;
-            text-align: center;
-        }
-
-        .card-footer a {
-            color: #ffffff;
-            background-color: #000000;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-        }
-
-        .footer {
-            background-color: #050a30;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #ffffff;
-            margin-left: 10px;
-        }
-
-        .footer a:hover {
-            color: #cccccc;
-        }
-
         /* Botão do WhatsApp */
         .whatsapp-link {
             position: fixed;
@@ -295,6 +271,10 @@
             .navbar-brand {
             margin-right: 3rem; /* Adiciona margem à direita da imagem da logo */
             }
+            .videoTam {
+            width: 500px;
+            height: auto;
+            }
             .hero {
                 height: 50vh;
             }    
@@ -372,7 +352,10 @@
                 font-size: 0.75rem;
                 padding: 6px 12px;
             }
-
+            .videoTam {
+            width: 350px;
+            height: auto;
+            }
             .services-section h2 {
                 font-size: 1.5rem;
                 margin-bottom: 15px;
@@ -500,14 +483,13 @@
     </style>
 </head>
 <body>
-    <!-- início do preloader -->
- <!-- início do preloader -->
+    <!-- início do preloader 
 <div id="preloader">
     <div class="inner">
         <img src="/gisele_const/img/Carregamento.gif" alt="Carregando...">
     </div>
 </div>
-<!-- fim do preloader -->
+
 
 <script src="js/preloader.js"></script>
 
@@ -523,7 +505,7 @@
     }, 2000); // 4000 milissegundos = 4 segundos
 </script>
 
-<!-- fim do preloader --> 
+--> 
 
 
 <script src="js/preloader.js"></script>
@@ -660,7 +642,7 @@
     
     
     <!-- Botão do WhatsApp -->
-    <a class="whatsapp-link" href="https://wa.me/5561996404086?text=Test%20buttom%20whats" target="_blank">
+    <a class="whatsapp-link" href="https://wa.me/5561991376402?text=Test%20buttom%20whats" target="_blank">
         <img src="/gisele_const/img/WhatsApp.svg.png" alt="WhatsApp">
     </a>
 
@@ -673,23 +655,69 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Serviços</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Sobre Nós</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Blog.html">Blog</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <!-- Hero Section -->
     <section class="hero">
         <div>
         </div>
     </section>
-
+    
+    
     <!-- Serviços -->
-    <section class="services-section"> <div class="container"> <h2>Nossos Serviços</h2> <div class="row justify-content-center"> <div class="col-lg-4 col-md-6 mb-4"> <div class="card"> <img src="img/project.jpg" class="card-img-top" alt="Serviço 1"> <div class="card-body"> <h5 class="card-title">Construção de Casas</h5> <p class="card-text">Oferecemos soluções completas para construção de residências, desde o planejamento até a entrega final.</p> </div> <div class="card-footer"> <a href="#">Saiba Mais</a> </div> </div> </div> </div> </div> </section>
+    <section class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2><b>Sobre nós</b></h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <video class="videoTam" controls>
+                        <source src="/gisele_const/img/sob.mov" type="video/mp4">
+                        Seu navegador não suporta o elemento <code>video</code>.
+                    </video>                  
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>
+                        <strong>Missão:</strong> Construir e incorporar empreendimentos habitacionais com inovação e qualidade, respeitando prazos e legislações, para garantir aos nossos clientes satisfação, confiabilidade e a realização do sonho do imóvel próprio.
+                        <br><br>
+                        <strong>Visão:</strong> Ser líder e sólida na construção civil, focada no crescimento contínuo de colaboradores e parceiros, destacando-se pela excelência, transparência, fidelização da marca e prospecção de novos negócios.
+                        <br><br>
+                        <strong>Valores:</strong>
+                        - Ética<br>
+                        - Respeito<br>
+                        - Comprometimento<br>
+                        - Programas Sociais<br>
+                        - Busca pela excelência<br>
+                        - Responsabilidade técnica<br>
+                        - Pontualidade<br>
+                        - Capacitação e motivação de colaboradores<br>
+                        - Melhoria contínua dos processos de gestão
+                        <br><br>
+                        <strong>Quem Somos:</strong> Fundada por Gisele (administradora) e Caio (administrador), a GISELE Construtora surgiu após uma bem-sucedida reforma em um imóvel de alto padrão em Brasília. Somos uma empresa familiar que entrou no mercado competitivo da construção civil com o compromisso de oferecer construções de alta qualidade, mesmo em empreendimentos do programa "Minha Casa, Minha Vida".
+                        <br><br>
+                        Utilizamos materiais resistentes e duráveis, minimizando a necessidade de pós-venda e garantias. Conforme o Código Civil (Lei nº 10.406/2002), garantimos a integridade do imóvel por até 5 anos após a entrega, oferecendo reparos e correções quando necessário.
+                        <br><br>
+                        <strong>Nossos Objetivos:</strong>
+                        - Priorizar o bem-estar do comprador, além do retorno financeiro.<br>
+                        - Consolidar nossa marca como uma referência no mercado.<br>
+                        - Tornar-se um exemplo de excelência no setor.<br>
+                        - Promover a divulgação através de recomendações e indicações.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Rodapé -->
     <footer class="footer">
